@@ -1,0 +1,12 @@
+*.py[cod]
+__pycache__
+
+*.jpg
+*.jpeg
+
+*.swp
+*.*~
+*.sqlite3
+
+.DS_Store
+.ropeproject

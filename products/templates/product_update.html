@@ -1,0 +1,23 @@
+{% load static %}
+
+<h2>{{message}}</h2><br>
+<hr>
+<a href="{% url 'index' %}">Back to Homepage</a><br><br>
+
+
+<style type='text/css'>
+    label{
+        width:100px;
+        display:inline-block
+    }
+</style>
+{% block content %}
+    <form method="POST" class="model-form" enctype="multipart/form-data"><br>
+        {% csrf_token %}
+            {{form.as_p}}
+            <hr><br>
+            {{form2.as_p}}
+            <button type='submit'>SAVE</button>
+    </form>
+{% endblock %}
+    

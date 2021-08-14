@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% load prod_tag %}
+{% block content %}
+    <head>
+        <title>Genesis | Products</title>
+    </head>
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-option spad set-bg" data-setbg="{% static 'products/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Our Products</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'index' %}">Home</a>
+                            <span>Products</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Project Page Section Begin -->
+    <section class="project-page spad">
+        <div class="container">
+            <div class="row">
+                {% for product in product%}
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="project__item">
+                        <img style="height: 500px;" src="{{ product.processor_detail.proc_image.url }}" alt="">
+                        <h4><a href="#">{{product.processor_detail.model_name}}</a></h4>
+                        <div class="d-flex justify-content-between">
+                            <span><b>Price:</b> ${{product.price}}</span>
+                            <span><b>Manufacturer:</b> {{product.manufacture.maker}}</span>
+                            <div>
+                            Rating:
+                            {% for i in product.rating|times %}
+                            <span class="fa fa-star checked" style="color:orange"></span>
+                            {% endfor %}
+                            {% for i in product.rating|x %}
+                            <span class="fa fa-star checked" style="color:gray"></span>
+                            {% endfor %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Project Page Section End -->
+    <script src="{% static 'products/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'products/js/products.js' %}"></script>
+{% endblock %}

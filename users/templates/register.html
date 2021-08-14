@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+    <head>
+        <title>Genesis - Register</title>
+    </head>
+
+    <body>
+        <h1>Register Template</h1>
+        <form method="POST" class="model-form">{% csrf_token %}
+            {{ form.as_p }}
+            {{ form2.as_p }}
+            <button type="submit">Save</button>
+        </form>
+    </body>
+
+</html>
