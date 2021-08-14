@@ -19,6 +19,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+#Heroku
+from django.views.static import serve
+from django.conf.urls import url
+
 urlpatterns = [
     path('', views.homepage, name='index'),
     path('admin/', admin.site.urls, name='admin'),
@@ -28,4 +32,8 @@ urlpatterns = [
     path('users/', include('users.urls')),
     # product
     path('product/', include('products.urls')),
+
+    # Heroku
+    url(r'^media/(?P<path>.*)$', serve, {'document_root':  settings.MEDIA_ROOT }),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
